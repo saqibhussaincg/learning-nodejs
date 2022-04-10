@@ -30,6 +30,23 @@ const fs = require('fs');
 
 // file create karne k liye
 // fs.writeFileSync('hello.txt', ' learning node js ');
-console.log('----->>>', __dirname);
-console.log('----->>>', __filename);
+// console.log('----->>>', __dirname);
+// console.log('----->>>', __filename);
 
+
+// console.log(process.argv);
+
+// ------- Creating File Lists Multilple -----
+
+const path = require('path');
+const dirPath = path.join(__dirname, 'filelist');
+
+// for( i = 0; i < 5; i++) {
+//     fs.writeFileSync(dirPath+'/Hello'+i+'.txt','Hi');
+// }
+
+fs.readdir(dirPath, (err, item) => {
+    item.map( (items) => {
+        console.log('--->>>', items);
+    })
+})
