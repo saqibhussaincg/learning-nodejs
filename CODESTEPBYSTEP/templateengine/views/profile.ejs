@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>EJS Profile Page</title>
+</head>
+<body>
+    <h1> EJS Profile Page </h1>
+    <p>EJS wali file se data le kar aa rahay hain profile.ejs se </p>
+    <h2> Welcome  <%=   user.name    %></h2>
+    <h3> Email : <%=   user.email    %></h3>
+    <h3> City : <%=   user.city    %></h3>
+    <ul>
+       <% user.skills.forEach ((item) => { %>
+        <li> <%= item %></li>
+        <% }) %>
+    </ul>
+</body>
+</html>
