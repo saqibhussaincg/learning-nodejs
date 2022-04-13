@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 
 
-
+// ROUTING WITH EXPRESS & RENDER IN HTML
 
 // app.get('', (req, res) => {
 //     console.log('data send by browser ===>', req.query.name); // request browser se arahi hai eg: localhost:5000/?name=saqib
