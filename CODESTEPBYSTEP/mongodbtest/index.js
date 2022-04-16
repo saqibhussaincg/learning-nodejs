@@ -40,6 +40,8 @@ const dbConnect = require('./mongodb')
 
 // TAREEKA NUMBER 02
 
+// ye data connect hota hua araha hai mongodb wali file se or idhar connectio kara rahay hain find karne k liye 
+// READING DATA    
 const main = async () => {
 
     let data = await dbConnect();
