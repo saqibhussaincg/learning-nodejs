@@ -1,13 +1,15 @@
 const mongoose = require('mongoose'); 
 
-const main = async () => {
+const saveInDB = async () => {
     await mongoose.connect('mongodb://localhost:27017/e-comm'); // connecting mongo compass 
 
     const productSchema = new mongoose.Schema(
         {
             name : String,
-            price : Number
-        }
+            brand : String,
+            price : Number,
+            category : String
+        } 
     );
 
     // schema mai validation dalin k sirf name or price hi add honge os k elawa koi field nahi jayegi
@@ -19,7 +21,9 @@ const main = async () => {
     let data = new ProductsModel(
         {
             name : 'M10',
-            price : 5000
+            price : 5000,
+            brand : 'vivo',
+            category : 'mobile'
         }
     );
 
@@ -32,4 +36,39 @@ const main = async () => {
     console.log(result);
 }
 
-main();
+// saveInDB();
+
+
+// =========== UPDATE =========
+const updateInDB = async (req, res) => {
+
+    const ProductsModel = mongoose.model('products', productSchema);
+
+    
+    let data = await ProductsModel.updateOne(
+        {name: "M40"},
+        {
+            $set: {price : 2000, name : "M45"}
+        }
+    )
+    console.log(data);
+}
+
+updateInDB();
+
+
+
+const deleteInDB = async () => {
+
+    const ProductsModel = mongoose.model('products', productSchema);
+
+    let data = await ProductsModel.deleteOne(
+        {
+            name : "F19"
+        }
+    )
+
+    console.log("Delete hogaya", data);
+}
+
+// deleteInDB();
