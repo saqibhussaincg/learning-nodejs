@@ -58,17 +58,18 @@ const updateInDB = async () => {
     console.log("UPDATE" , data);
 }
 
-updateInDB();
+// updateInDB();
 
 
 
 const deleteInDB = async () => {
+    await mongoose.connect('mongodb://localhost:27017/e-comm'); // connecting mongo compass 
 
     const ProductsModel = mongoose.model('products', productSchema);
 
     let data = await ProductsModel.deleteOne(
         {
-            name : "F19"
+            name : "Chai"
         }
     )
 
@@ -76,3 +77,15 @@ const deleteInDB = async () => {
 }
 
 // deleteInDB();
+
+const FindInDB = async () => {
+    await mongoose.connect('mongodb://localhost:27017/e-comm'); // connecting mongo compass 
+
+    const ProductsModel = mongoose.model('products', productSchema);
+
+    let data = await ProductsModel.find();
+
+    console.log("Find hogaya", data);
+}
+
+FindInDB();
