@@ -1,16 +1,18 @@
 const mongoose = require('mongoose'); 
 
+const productSchema = new mongoose.Schema(
+    {
+        name : String,
+        brand : String,
+        price : Number,
+        category : String
+    } 
+);
+
 const saveInDB = async () => {
     await mongoose.connect('mongodb://localhost:27017/e-comm'); // connecting mongo compass 
 
-    const productSchema = new mongoose.Schema(
-        {
-            name : String,
-            brand : String,
-            price : Number,
-            category : String
-        } 
-    );
+    
 
     // schema mai validation dalin k sirf name or price hi add honge os k elawa koi field nahi jayegi
 
@@ -20,10 +22,10 @@ const saveInDB = async () => {
 
     let data = new ProductsModel(
         {
-            name : 'M10',
-            price : 5000,
-            brand : 'vivo',
-            category : 'mobile'
+            name : 'Chai',
+            price : 4000,
+            brand : 'tapal',
+            category : 'tea'
         }
     );
 
@@ -40,18 +42,20 @@ const saveInDB = async () => {
 
 
 // =========== UPDATE =========
-const updateInDB = async (req, res) => {
+const updateInDB = async () => {
+    await mongoose.connect('mongodb://localhost:27017/e-comm'); // connecting mongo compass 
+
 
     const ProductsModel = mongoose.model('products', productSchema);
 
     
     let data = await ProductsModel.updateOne(
-        {name: "M40"},
+        {name: "M60"},
         {
-            $set: {price : 2000, name : "M45"}
+            $set: {price : 2000}
         }
     )
-    console.log(data);
+    console.log("UPDATE" , data);
 }
 
 updateInDB();
