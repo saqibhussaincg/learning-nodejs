@@ -46,4 +46,33 @@ app.delete('/delete/:_id', async (req, res) => {
 // postman k params mai id dali tou data base se os id ka object delete hogaya
 
 
+
+// PUT MOTHOD --- Update
+app.delete('/update/:_id', async (req, res) => {
+
+    console.log(req.params);
+
+    let data = await Products.updateOne(
+        
+            req.params, 
+            {$set: req.body} // req lao data lao postman ki body se
+        
+    );
+
+    res.send(data)
+})
+
+/* 
+1. mongo db se id select karenge jis object mai update karna ho
+2. postman mai ja k params mai ja k os ki ko paste karenge
+3. body mai jo bhi cheez update karni ho name,price ya brand wo type kar k os mai changes kar k send kar denge 
+4. data mongodb mai update ho jayega
+*/
+
+/*
+1. Delete method k liye id query param mai jayegi
+*/
+
+
+
 app.listen(5000)
