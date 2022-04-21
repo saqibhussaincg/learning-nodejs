@@ -1,4 +1,5 @@
 const express = require('express');
+const products = require('./products');
 require('./config');
 
 const Products = require('./products');
@@ -73,6 +74,21 @@ app.delete('/update/:_id', async (req, res) => {
 1. Delete method k liye id query param mai jayegi
 */
 
+
+// Search API 
+
+app.get('/search/:key', async (req, res) => {
+    console.log(req.params.key);
+    let data = await Products.find(
+        {
+            "$or":[
+                {"name" : {$regex:req.params.key}}
+            ]
+        }
+    )
+    res.send(data);
+    res.send('search done');
+})
 
 
 app.listen(5000)
