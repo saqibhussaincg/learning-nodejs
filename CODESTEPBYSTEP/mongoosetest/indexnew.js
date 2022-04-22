@@ -85,7 +85,7 @@ app.get('/search/:key', async (req, res) => {
                 {"name" : {$regex:req.params.key}}, //searching with name
                 {"brand" : {$regex:req.params.key}}, // searching with brand
                 {"category" : {$regex:req.params.key}}
-            ]cls
+            ]
         }
     )
     res.send(data);
